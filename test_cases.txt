@@ -1,0 +1,123 @@
+test_auth_positive:
+1. Открыть https://www.saucedemo.com/
+2. Найти поле Username [@id="user-name"] и ввести существующее имя 'standard_user'
+3. Найти поле Password [@id="password"] и ввести существующий пароль 'secret_sauce'
+4. Найти кнопку Login [@id="login-button"] и кликнуть по ней
+5. Проверить что открылась https://www.saucedemo.com/inventory.html
+6. Закрыть драйвер
+
+test_auth_negative:
+1. Открыть https://www.saucedemo.com/
+2. Найти поле Username [@id="user-name"] и ввести существующее имя 'standard_user'
+3. Найти поле Password [@id="password"] и ввести несуществующий пароль 'secret_$auce'
+4. Найти кнопку Login [@id="login-button"] и кликнуть по ней
+5. Проверить что не открылась https://www.saucedemo.com/inventory.html
+6. Закрыть драйвер
+
+test_add_item_to_cart_via_catalog:
+1. Авторизоваться в магазине
+2. Найти кнопку Add to cart [@id="add-to-cart-sauce-labs-backpack"] и кликнуть по ней
+3. Открыть https://www.saucedemo.com/cart.html
+4. Найти поле QTY [@class="cart_quantity"] и проверить что в нем 1 товар
+5. Закрыть драйвер
+
+test_del_item_from_cart_via_cart:
+1. Авторизоваться в магазине
+2. Найти кнопку Add to cart и кликнуть по ней
+3. Открыть https://www.saucedemo.com/cart.html
+4. Найти кнопку Remove [@id="remove-sauce-labs-backpack"] и кликнуть по ней
+5. Проверить что иконка чистой корзины [@class="shopping_cart_badge"]==0
+6. Закрыть драйвер
+
+test_add_item_to_cart_from_product_card:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory-item.html?id=0
+3. Найти кнопку Add to cart [@id="add-to-cart"] и кликнуть по ней
+4. Найти что иконка корзины не пустая [@class="shopping_cart_badge"]==1
+5. Закрыть драйвер
+
+test_del_item_from_cart_via_product_card:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory-item.html?id=0
+3. Найти кнопку Add to cart [@id="add-to-cart"] и кликнуть по ней
+4. Найти кнопку Remove [@id="remove"] и кликнуть по ней
+5. Проверить что иконка чистой корзины [@class="shopping_cart_badge"]==0
+6. Закрыть драйвер
+
+test_positive_transition_to_product_card_after_click_on_picture:
+1. Авторизоваться в магазине
+2. Найти картинку [@id='item_0_img_link'] и кликнуть по ней
+3. Проверить что открылась https://www.saucedemo.com/inventory-item.html?id=0
+4. Закрыть драйвер
+
+test_positive_transition_to_product_card_after_click_on_name:
+1. Авторизоваться в магазине
+2. Найти наименование [@id='item_0_title_link'] и кликнуть по ней
+3. Проверить что открылась https://www.saucedemo.com/inventory-item.html?id=0
+4. Закрыть драйвер
+
+test_checkout_using_correct_data:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory-item.html?id=0
+3. Найти кнопку Add to cart [@id="add-to-cart"] и кликнуть по ней
+4. Открыть https://www.saucedemo.com/cart.html
+5. Найти кнопку 'Checkout' [@id='checkout'] и кликнуть по ней
+6. Найти поле 'First Name' [@id='first-name'] и ввести имя 'Alex'
+7. Найти поле 'Last Name' [@id='last-name'] и ввести имя 'Clark'
+8. Найти поле 'Zip/Postal Code' [@id='postal-code'] и ввести код 94271
+9. Найти кнопку 'Continue' [@id='continue'] и кликнуть по ней
+10. Найти кнопку 'Finish' [@id='finish'] и кликнуть по ней
+11. Проверить что заказ успешный 'Thank you for your order!' [@class='complete-header']==1
+12. Закрыть драйвер
+
+test_filter_function_check_A_Z:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти меню фильтра, раскрыть и кликнуть по необходимому в списке
+4. Проверить что товары на странице отсортированы по алфавиту
+6. Закрыть драйвер
+
+test_filter_function_check_Z_A:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти меню фильтра, раскрыть и кликнуть по необходимому в списке
+4. Проверить что товары на странице отсортированы по алфавиту в реверс
+6. Закрыть драйвер
+
+test_filter_performance_check_Low_High:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти меню фильтра, раскрыть и кликнуть по необходимому в списке
+4. Проверить что товары на странице отсортированы по увеличению стоимости
+6. Закрыть драйвер
+
+test_filter_function_check_High_Low:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти меню фильтра, раскрыть и кликнуть по необходимому в списке
+4. Проверить что товары на странице отсортированы по уменьшению стоимости
+6. Закрыть драйвер
+
+test_logout:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти кнопку бургер-меню и кликнуть по ней
+4. Найти кнопку Logout и кликнуть по ней
+5. Проверить что открылась страница и отсутствует авторизация
+6. Закрыть драйвер
+
+test_checking_if_about_button_in_menu_works:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти кнопку бургер-меню и кликнуть по ней
+4. Найти кнопку About и кликнуть по ней
+5. Проверить что открылась https://saucelabs.com/
+6. Закрыть драйвер
+
+test_checking_if_reset_app_state_button_works:
+1. Авторизоваться в магазине
+2. Открыть https://www.saucedemo.com/inventory.html
+3. Найти кнопку бургер-меню и кликнуть по ней
+4. Найти кнопку Reset App State и кликнуть по ней
+5. Проверить что корзина пуста
+6. Закрыть драйвер
