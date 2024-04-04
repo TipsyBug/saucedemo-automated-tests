@@ -4,26 +4,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 
-
 class MainPage(BasePage):
     def login(self, username, password):
-        # Метод для входа в магазин
-        self.driver.get(self.base_url)
-        # Здесь находим элементы для ввода логина, пароля и кнопки входа
+        self.driver.get(self.base_url) # entrance to the store
+        # elements for entering login, password and login button
         username_field = self.driver.find_element(By.XPATH, "//*[@id='user-name']")
         password_field = self.driver.find_element(By.XPATH, "//*[@id='password']")
         login_button = self.driver.find_element(By.XPATH, "//*[@id='login-button']")
-        # Вводим логин и пароль
-        username_field.send_keys(username)
+        username_field.send_keys(username) # entering login, password
         password_field.send_keys(password)
-        # Нажимаем кнопку входа
-        login_button.click()
+        login_button.click() # clicking login button
 
 
     def logout(self):
-        # Ждем, пока кнопка "Logout" станет кликабельной
         logout_button = self.driver.find_element(By.XPATH, "//a[@id='logout_sidebar_link']")
-        # Кликаем по кнопке "Logout"
         logout_button.click()
 
 

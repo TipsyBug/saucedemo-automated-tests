@@ -1,12 +1,15 @@
 import pytest
-from pages.main_page import MainPage
-from utils.webdriver_utils import get_driver
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 @pytest.fixture(scope="function")
-def authenticated_browser():
-    # Функция login в вашем модуле авторизации должна возвращать авторизованный браузер
-    driver = get_driver()
-    main_page = MainPage(driver)
-    main_page.login("standard_user", "secret_sauce")  # Замените "your_username" и "your_password" на реальные учетные данные
+def driver():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--windows-size=1920x1080")
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     yield driver
-    driver.quit()  # Закрываем браузер после завершения всех тестов
+    driver.close()
