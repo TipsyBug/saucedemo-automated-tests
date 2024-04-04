@@ -8,4 +8,3 @@ class OrderLocators:
     FINISH_BTN = ("css selector", "button[id='finish']")
     SUCCESSFUL_ORDER = ("css selector", "h2[data-test='complete-header']")
     ERROR_MESSAGE = ("css selector", "h3[data-test='error']")
-
